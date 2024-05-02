@@ -28,12 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <Shared.Utils.QueryProvider>
-        <body className={notoSansKR.className}>
+      <body className={notoSansKR.className}>
+        <Shared.Utils.QueryProvider>
           <Components.Header />
           {children}
-        </body>
-      </Shared.Utils.QueryProvider>
+        </Shared.Utils.QueryProvider>
+      </body>
     </html>
   );
 }

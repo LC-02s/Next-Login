@@ -1,3 +1,2 @@
-import * as Utils from "./utils";
-
-export { Utils };
+export * as api from "./api";
+export * as Utils from "./utils";
