@@ -4,5 +4,9 @@ import authKeys from "./auth-keys";
 export default function useAccessToken() {
   const queryClient = useQueryClient();
 
-  return { accessToken: queryClient.getQueryData(authKeys.accessToken()) };
+  return {
+    accessToken: queryClient.getQueryData<string | undefined>(
+      authKeys.accessToken(),
+    ),
+  };
 }

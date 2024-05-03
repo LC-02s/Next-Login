@@ -53,7 +53,12 @@ const handlers: HttpHandler[] = [
     if (request.headers.has("Refresh-Token")) {
       return HttpResponse.json({ token });
     }
-    return error("유효하지 않은 요청입니다", 403);
+    return error("유효하지 않은 요청입니다", 401);
+  }),
+  get("/auth/logout", () => {
+    return HttpResponse.json(null, {
+      headers: { "Set-Cookie": `Refresh-Token=${token}; Max-Age=0; Path=/` },
+    });
   }),
   get("/auth/join/username-duplicate", ({ request }) => {
     const params = getParams(request.url);

@@ -10,7 +10,10 @@ export default function useLoginMutation(info: LoginInfo) {
     mutationKey: authKeys.login(info),
     mutationFn: () => login(info),
     onSuccess: ({ data }) => {
-      queryClient.setQueryData(authKeys.accessToken(), data.token);
+      queryClient.setQueryData<typeof data.token>(
+        authKeys.accessToken(),
+        data.token,
+      );
     },
   });
 }
