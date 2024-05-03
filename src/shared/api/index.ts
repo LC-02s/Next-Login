@@ -1,5 +1,5 @@
 const getBaseURL = () => {
-  return `${typeof window === "undefined" ? process.env.FE_URL : ""}/api`;
+  return `${typeof window === "undefined" ? process.env.NEXT_PUBLIC_FE_URL : ""}/api`;
 };
 
 export const api = {

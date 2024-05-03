@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const baseURL = process.env.FE_URL;
+const baseURL = process.env.NEXT_PUBLIC_FE_URL;
 
 export async function middleware(req: NextRequest) {
   const { pathname, searchParams } = req.nextUrl;

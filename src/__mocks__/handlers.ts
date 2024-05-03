@@ -45,18 +45,21 @@ const handlers: HttpHandler[] = [
         hasExtraDetails: true,
       },
       {
-        headers: { "Set-Cookie": `Refresh-Token=${token}; Max-Age=60; Path=/` },
+        headers: {
+          "Set-Cookie": `Refresh-Token=${token}; Max-Age=300; Path=/; HttpOnly=true`,
+        },
       },
     );
   }),
-  get("/auth/reissue", ({ request }) => {
-    if (request.headers.has("Refresh-Token")) {
+  get("/auth/reissue", ({ cookies }) => {
+    if (cookies["Refresh-Token"]) {
       return HttpResponse.json({ token });
     }
     return error("유효하지 않은 요청입니다", 401);
   }),
   get("/auth/logout", () => {
     return HttpResponse.json(null, {
+      status: 200,
       headers: { "Set-Cookie": `Refresh-Token=${token}; Max-Age=0; Path=/` },
     });
   }),
