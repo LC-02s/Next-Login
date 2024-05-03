@@ -2,7 +2,7 @@ const getBaseURL = () => {
   return `${typeof window === "undefined" ? process.env.FE_URL : ""}/api`;
 };
 
-const api = {
+export const api = {
   async fetch<T = unknown>(
     path: string,
     option?: RequestInit,
@@ -16,5 +16,3 @@ const api = {
     return { ...res, data };
   },
 };
-
-export default api;

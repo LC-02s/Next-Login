@@ -38,17 +38,22 @@ const token =
 const handlers: HttpHandler[] = [
   post("/auth/login", () => {
     // 인가된 사용자
-    return HttpResponse.json({
-      token,
-      memberId: "member-id",
-      hasExtraDetails: true,
-    });
-    // 인가되지 않은 사용자
-    return HttpResponse.json({
-      token: null,
-      memberId: null,
-      hasExtraDetails: false,
-    });
+    return HttpResponse.json(
+      {
+        token,
+        memberId: "member-id",
+        hasExtraDetails: true,
+      },
+      {
+        headers: { "Set-Cookie": `Refresh-Token=${token}; Max-Age=60; Path=/` },
+      },
+    );
+  }),
+  get("/auth/reissue", ({ request }) => {
+    if (request.headers.has("Refresh-Token")) {
+      return HttpResponse.json({ token });
+    }
+    return error("유효하지 않은 요청입니다", 403);
   }),
   get("/auth/join/username-duplicate", ({ request }) => {
     const params = getParams(request.url);
