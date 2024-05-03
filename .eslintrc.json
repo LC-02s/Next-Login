@@ -8,9 +8,10 @@
     "next/core-web-vitals",
     "airbnb",
     "airbnb-typescript",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended"
+    "prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",

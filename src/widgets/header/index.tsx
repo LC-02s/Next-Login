@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-4">
+    <header className="flex items-center justify-between p-4">
       <h1>
         <Link href="/" className="font-bold">
           LOGO
         </Link>
       </h1>
       <nav>
-        <ul className="flex justify-end items-center gap-4">
+        <ul className="flex items-center justify-end gap-4">
           <li>
             <Link href="/login">로그인</Link>
           </li>
